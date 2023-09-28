@@ -20,7 +20,7 @@ type Config struct {
 	TempDir      string `help:"directory where temporary archive files are written"`
 	KeepFiles    bool   `help:"whether we should keep local archive files after upload (default false)"`
 	UploadToS3   bool   `help:"whether we should upload archive to S3"`
-	IgnoreMD5Sum bool   `help:"whether to ignore md5sum S3 ETag comparison before deleting"`
+    CheckS3Hashes bool   `help:"whether to check S3 hashes of uploaded archives before deleting records"`
 
 	ArchiveMessages bool   `help:"whether we should archive messages"`
 	ArchiveRuns     bool   `help:"whether we should archive runs"`
@@ -54,6 +54,7 @@ func NewDefaultConfig() *Config {
 		TempDir:    "/tmp",
 		KeepFiles:  false,
 		UploadToS3: true,
+        CheckS3Hashes: true,
 
 		ArchiveMessages: true,
 		ArchiveRuns:     true,
